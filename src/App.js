@@ -9,8 +9,6 @@ import { AuthProvider } from './context/AuthContext';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
-// Import Calculator with correct path
-import Calculator from './public/Calculator/calculator.js';
 
 function App() {
    return (
@@ -19,10 +17,10 @@ function App() {
                <CssBaseline />
                <Router>
                    <Routes>
-                       {/* Calculator as public route */}
-                       <Route path="/" element={<Calculator />} />
+                       {/* Main route redirects to login */}
+                       <Route path="/" element={<Navigate to="/login" />} />
                        
-                       {/* Original routes */}
+                       {/* Admin routes */}
                        <Route path="/login" element={<Login />} />
                        <Route 
                            path="/dashboard" 
@@ -33,8 +31,8 @@ function App() {
                            } 
                        />
                        
-                       {/* Redirect all other routes to calculator */}
-                       <Route path="*" element={<Navigate to="/" />} />
+                       {/* Redirect all other routes to login */}
+                       <Route path="*" element={<Navigate to="/login" />} />
                    </Routes>
                </Router>
            </ThemeProvider>
